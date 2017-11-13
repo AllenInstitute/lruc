@@ -42,7 +42,7 @@ TEST(LruCacheTest, Insert)
 
 	cache.insert(1, 3);
 
-	const lru_cache<int, int>::const_data_iterator value_iter = cache.find(1);
+	const lru_cache<int, int>::const_iterator value_iter = cache.find(1);
 
 	EXPECT_TRUE(cache.contains(1));
 
@@ -63,7 +63,7 @@ TEST(LruCacheTest, Replace)
 
 	EXPECT_TRUE(cache.contains(1));
 
-	const lru_cache<int, int>::const_data_iterator value_iter = cache.find(1);
+	const lru_cache<int, int>::const_iterator value_iter = cache.find(1);
 
 	ASSERT_NE(value_iter, cache.cend());
 	ASSERT_EQ(value_iter->second, 2);
@@ -138,7 +138,7 @@ TEST(LruCacheTest, Find)
 
 	cache.insert(1, 3);
 
-	const lru_cache<int, int>::const_data_iterator value_iter = cache.find(1);
+	const lru_cache<int, int>::const_iterator value_iter = cache.find(1);
 
 	EXPECT_TRUE(cache.contains(1));
 	EXPECT_FALSE(cache.contains(2));
@@ -156,7 +156,7 @@ TEST(LruCacheTest, Find)
 TEST(LruCacheTest, Evict)
 {
 	lru_cache<int, int> cache(2);
-	lru_cache<int, int>::const_data_iterator value_iter = cache.cend();
+	lru_cache<int, int>::const_iterator value_iter = cache.cend();
 
 	cache.insert(1, 1);
 	cache.insert(2, 2);

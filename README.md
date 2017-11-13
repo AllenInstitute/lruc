@@ -45,7 +45,7 @@ cache.insert(2, "Reznor");
 
 cache.remove(1);
 
-const lru_cache<size_t, std::string>::const_data_iterator value_iter = cache.find(2);
+const lru_cache<size_t, std::string>::const_iterator value_iter = cache.find(2);
 
 if (value_iter != cache.cend())
 	std::cout << value_iter->second;
