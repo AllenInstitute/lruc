@@ -114,7 +114,7 @@ namespace lruc
 		bool contains(const Key& key) const { return _keys.count(key); }
 
 
-		void erase(const Key& key)
+		void remove(const Key& key)
 		{
 			const key_iterator& key_iter = _keys.find(key);
 

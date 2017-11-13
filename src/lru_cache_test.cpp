@@ -87,7 +87,7 @@ TEST(LruCacheTest, Clear)
 	ASSERT_EQ(cache.evict_count(), 3);
 }
 
-TEST(LruCacheTest, Erase)
+TEST(LruCacheTest, Remove)
 {
 	lru_cache<int, int> cache(3);
 
@@ -95,7 +95,7 @@ TEST(LruCacheTest, Erase)
 	cache.insert(2, 2);
 	cache.insert(3, 3);
 
-	cache.erase(2);
+	cache.remove(2);
 
 	EXPECT_FALSE(cache.contains(2));
 
@@ -113,7 +113,7 @@ TEST(LruCacheTest, Size)
 
 	ASSERT_EQ(cache.size(), 2);
 
-	cache.erase(2);
+	cache.remove(2);
 
 	ASSERT_EQ(cache.size(), 1);
 
