@@ -128,7 +128,7 @@ namespace lruc
 		}
 
 
-		void clear()
+		void clear() noexcept
 		{
 			const size_t old_size = size();
 
@@ -139,19 +139,19 @@ namespace lruc
 		}
 
 
-		size_t hit_count()		const { return _hit_count; }
-		size_t miss_count()		const { return _miss_count; }
-		size_t insert_count()	const { return _insert_count; }
-		size_t evict_count()	const { return _evict_count; }
+		size_t hit_count()		const noexcept { return _hit_count; }
+		size_t miss_count()		const noexcept { return _miss_count; }
+		size_t insert_count()	const noexcept { return _insert_count; }
+		size_t evict_count()	const noexcept { return _evict_count; }
 
 
-		size_t max_size()		const { return _max_size; }
-		size_t size()			const { return _keys.size(); }
-		bool empty()			const { return _keys.empty(); }
+		size_t max_size()		const noexcept { return _max_size; }
+		size_t size()			const noexcept { return _keys.size(); }
+		bool empty()			const noexcept { return _keys.empty(); }
 
 
-		const_iterator cbegin() const { return _data.cbegin(); }
-		const_iterator cend()   const { return _data.cend(); }
+		const_iterator cbegin() const noexcept { return _data.cbegin(); }
+		const_iterator cend()   const noexcept { return _data.cend(); }
 
 
 		std::string to_string() const
