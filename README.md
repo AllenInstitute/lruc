@@ -2,7 +2,7 @@
 C++03 fast and lightweight LRU in-memory cache implementation.
 
 # Build Requirements
-* C++03 compiler with [TR1](https://en.wikipedia.org/wiki/C%2B%2B_Technical_Report_1) support (for using [std::tr1::unordered_map<>](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2003/n1456.html))
+* Compiler with [C++11](https://en.wikipedia.org/wiki/C%2B%2B11) standart support
 * [CMake](https://cmake.org/) >= 3.1
 
 # Complexity
