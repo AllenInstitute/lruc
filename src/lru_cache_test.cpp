@@ -36,6 +36,23 @@ TEST(LruCacheTest, Insert)
 	ASSERT_EQ(cache.hit_count(), 1);
 }
 
+TEST(LruCacheTest, Replace)
+{
+	lru_cache<int, int> cache(1);
+
+	cache.insert(1, 1);
+	cache.insert(1, 2);
+
+	EXPECT_TRUE(cache.contains(1));
+
+	const lru_cache<int, int>::data_const_iterator value_iter = cache.find(1);
+
+	ASSERT_NE(value_iter, cache.end());
+	ASSERT_EQ(value_iter->second, 2);
+
+	ASSERT_EQ(cache.insert_count(), 2);
+}
+
 TEST(LruCacheTest, Clear)
 {
 	lru_cache<int, int> cache(3);
