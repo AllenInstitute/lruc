@@ -20,8 +20,7 @@ under the License. */
 #include <cassert>
 #include <list>
 #include <sstream>
-
-#include <tr1/unordered_map>
+#include <unordered_map>
 
 namespace lruc
 {
@@ -32,7 +31,7 @@ namespace lruc
 		typedef std::list<data_value_type>						data_container;
 		typedef typename data_container::iterator				data_iterator;
 
-		typedef std::tr1::unordered_map<Key, data_iterator>		key_container;
+		typedef std::unordered_map<Key, data_iterator>			key_container;
 		typedef typename key_container::const_iterator			key_iterator;
 
 
