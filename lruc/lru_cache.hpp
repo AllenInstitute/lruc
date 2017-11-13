@@ -105,7 +105,7 @@ namespace lruc
 		}
 
 
-		inline bool contains(const Key& key) const { return _keys.count(key); }
+		bool contains(const Key& key) const { return _keys.count(key); }
 
 
 		void erase(const Key& key)
@@ -133,19 +133,19 @@ namespace lruc
 		}
 
 
-		inline size_t hit_count()		const { return _hit_count; }
-		inline size_t miss_count()		const { return _miss_count; }
-		inline size_t insert_count()	const { return _insert_count; }
-		inline size_t evict_count()		const { return _evict_count; }
+		size_t hit_count()		const { return _hit_count; }
+		size_t miss_count()		const { return _miss_count; }
+		size_t insert_count()	const { return _insert_count; }
+		size_t evict_count()	const { return _evict_count; }
 
 
-		inline size_t max_size() const { return _max_size; }
-		inline size_t size()	 const { return _keys.size(); }
-		inline bool empty()		 const { return _keys.empty(); }
+		size_t max_size()		const { return _max_size; }
+		size_t size()			const { return _keys.size(); }
+		bool empty()			const { return _keys.empty(); }
 
 
-		inline data_const_iterator begin() const { return _data.begin(); }
-		inline data_const_iterator end()   const { return _data.end(); }
+		data_const_iterator begin() const { return _data.begin(); }
+		data_const_iterator end()   const { return _data.end(); }
 
 
 		std::string to_string() const
