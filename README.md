@@ -10,7 +10,7 @@ Modern, fast and lightweight C++11 LRU in-memory cache implementation.
 <b>lruc::lru_cache::insert</b>
 <b>lruc::lru_cache::find</b>
 <b>lruc::lru_cache::contains</b>
-<b>lruc::lru_cache::erase</b>
+<b>lruc::lru_cache::remove</b>
 </pre>
 Amortized constant on average, worst case linear in the size of the cache.
 
