@@ -49,19 +49,22 @@ namespace lruc
 
 				_data.splice(_data.begin(), _data, key_iter->second);
 			}
-			else if (_data.size() == _max_size)
+			else
 			{
-				const data_value_type& value_iter = _data.back();
+				if (_data.size() == _max_size)
+				{
+					const data_value_type& value_iter = _data.back();
 
-				_keys.erase(value_iter.first);
-				_data.pop_back();
+					_keys.erase(value_iter.first);
+					_data.pop_back();
 
-				++_evict_count;
+					++_evict_count;
+				}
+
+				_data.push_front(data_value_type(key, value));
+
+				_keys[key] = _data.begin();
 			}
-
-			_data.push_front(data_value_type(key, value));
-
-			_keys[key] = _data.begin();
 
 			++_insert_count;
 		}
