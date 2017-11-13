@@ -56,6 +56,12 @@ namespace lruc
 		{ assert(max_size); }
 
 
+		lru_cache(const lru_cache&) = delete;
+
+
+		lru_cache& operator=(const lru_cache&) = delete;
+
+
 		void insert(const Key& key, const T& value)
 		{
 			const key_iterator key_iter = _keys.find(key);
@@ -158,9 +164,5 @@ namespace lruc
 
 			return lru_cache_string.str();
 		}
-
-	private:
-		lru_cache(const lru_cache&);
-		lru_cache& operator=(const lru_cache&);
 	};
 }
