@@ -42,11 +42,11 @@ TEST(LruCacheTest, Insert)
 
 	cache.insert(1, 3);
 
-	const lru_cache<int, int>::data_const_iterator value_iter = cache.find(1);
+	const lru_cache<int, int>::const_data_iterator value_iter = cache.find(1);
 
 	EXPECT_TRUE(cache.contains(1));
 
-	ASSERT_NE(value_iter, cache.end());
+	ASSERT_NE(value_iter, cache.cend());
 	ASSERT_EQ(value_iter->second, 3);
 
 	ASSERT_EQ(cache.size(), 1);
@@ -63,9 +63,9 @@ TEST(LruCacheTest, Replace)
 
 	EXPECT_TRUE(cache.contains(1));
 
-	const lru_cache<int, int>::data_const_iterator value_iter = cache.find(1);
+	const lru_cache<int, int>::const_data_iterator value_iter = cache.find(1);
 
-	ASSERT_NE(value_iter, cache.end());
+	ASSERT_NE(value_iter, cache.cend());
 	ASSERT_EQ(value_iter->second, 2);
 
 	ASSERT_EQ(cache.insert_count(), 2);
@@ -99,7 +99,7 @@ TEST(LruCacheTest, Erase)
 
 	EXPECT_FALSE(cache.contains(2));
 
-	ASSERT_EQ(cache.find(2), cache.end());
+	ASSERT_EQ(cache.find(2), cache.cend());
 	ASSERT_EQ(cache.miss_count(), 1);
 	ASSERT_EQ(cache.evict_count(), 1);
 }
@@ -138,13 +138,13 @@ TEST(LruCacheTest, Find)
 
 	cache.insert(1, 3);
 
-	const lru_cache<int, int>::data_const_iterator value_iter = cache.find(1);
+	const lru_cache<int, int>::const_data_iterator value_iter = cache.find(1);
 
 	EXPECT_TRUE(cache.contains(1));
 	EXPECT_FALSE(cache.contains(2));
 
-	ASSERT_EQ(cache.find(2), cache.end());
-	ASSERT_NE(value_iter, cache.end());
+	ASSERT_EQ(cache.find(2), cache.cend());
+	ASSERT_NE(value_iter, cache.cend());
 
 	ASSERT_EQ(value_iter->first, 1);
 	ASSERT_EQ(value_iter->second, 3);
@@ -156,29 +156,29 @@ TEST(LruCacheTest, Find)
 TEST(LruCacheTest, Evict)
 {
 	lru_cache<int, int> cache(2);
-	lru_cache<int, int>::data_const_iterator value_iter = cache.end();
+	lru_cache<int, int>::const_data_iterator value_iter = cache.cend();
 
 	cache.insert(1, 1);
 	cache.insert(2, 2);
 
 	value_iter = cache.find(1);
-	ASSERT_NE(value_iter, cache.end());
+	ASSERT_NE(value_iter, cache.cend());
 	ASSERT_EQ(value_iter->second, 1);
 
 	cache.insert(3, 3);
 	EXPECT_FALSE(cache.contains(2));
-	ASSERT_EQ(cache.find(2), cache.end());
+	ASSERT_EQ(cache.find(2), cache.cend());
 
 	cache.insert(4, 4);
 	EXPECT_FALSE(cache.contains(1));
-	ASSERT_EQ(cache.find(1), cache.end());
+	ASSERT_EQ(cache.find(1), cache.cend());
 
 	value_iter = cache.find(3);
-	ASSERT_NE(value_iter, cache.end());
+	ASSERT_NE(value_iter, cache.cend());
 	ASSERT_EQ(value_iter->second, 3);
 
 	value_iter = cache.find(4);
-	ASSERT_NE(value_iter, cache.end());
+	ASSERT_NE(value_iter, cache.cend());
 	ASSERT_EQ(value_iter->second, 4);
 
 	ASSERT_EQ(cache.evict_count(), 2);

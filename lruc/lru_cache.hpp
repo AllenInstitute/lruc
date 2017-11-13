@@ -45,7 +45,7 @@ namespace lruc
 		size_t						_evict_count;
 
 	public:
-		typedef typename data_container::const_iterator			data_const_iterator;
+		typedef typename data_container::const_iterator			const_data_iterator;
 
 		explicit lru_cache(size_t max_size)
 			: _max_size(max_size),
@@ -87,14 +87,14 @@ namespace lruc
 		}
 
 
-		data_const_iterator find(const Key& key) const
+		const_data_iterator find(const Key& key) const
 		{
 			const key_iterator key_iter = _keys.find(key);
 
 			if (key_iter == _keys.end())
 			{
 				++_miss_count;
-				return end();
+				return cend();
 			}
 
 			_data.splice(_data.begin(), _data, key_iter->second);
@@ -144,8 +144,8 @@ namespace lruc
 		bool empty()			const { return _keys.empty(); }
 
 
-		data_const_iterator begin() const { return _data.begin(); }
-		data_const_iterator end()   const { return _data.end(); }
+		const_data_iterator cbegin() const { return _data.cbegin(); }
+		const_data_iterator cend()   const { return _data.cend(); }
 
 
 		std::string to_string() const
