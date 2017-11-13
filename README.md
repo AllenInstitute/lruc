@@ -1,5 +1,5 @@
 # lruc
-C++03 fast and lightweight LRU in-memory cache implementation.
+Modern, fast and lightweight C++11 LRU in-memory cache implementation.
 
 # Build Requirements
 * Compiler with [C++11](https://en.wikipedia.org/wiki/C%2B%2B11) standart support
@@ -43,8 +43,12 @@ lru_cache<size_t, std::string> cache(42);
 cache.insert(1, "Trent");
 cache.insert(2, "Reznor");
 
-const lru_cache<size_t, std::string>::const_data_iterator value_iter = cache.find(1);
+cache.remove(1);
 
-if (cache.contains(2))
-  std::cout << cache.to_string();
+const lru_cache<size_t, std::string>::const_data_iterator value_iter = cache.find(2);
+
+if (value_iter != cache.cend())
+	std::cout << value_iter->second;
+else
+	std::cout << cache.to_string();
 ```
