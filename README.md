@@ -52,3 +52,7 @@ if (value_iter != cache.cend())
 else
 	std::cout << cache.to_string();
 ```
+
+# License
+_Copyright 2017 Aleksandr Dikanchukov_<br/>
+_Licensed under the Apache License, Version 2.0_
