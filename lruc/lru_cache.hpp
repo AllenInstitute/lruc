@@ -84,7 +84,7 @@ namespace lruc
 					++_evict_count;
 				}
 
-				_data.push_front(data_value_type(key, value));
+				_data.emplace_front(key, value);
 
 				_keys[key] = _data.begin();
 			}
