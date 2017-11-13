@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.1)
 
 project(lruc)
 
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 # Download and unpack googletest at configure time
 configure_file(3rdparty/googletest/CMakeLists.txt googletest-download/CMakeLists.txt)
 execute_process(
