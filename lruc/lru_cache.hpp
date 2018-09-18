@@ -24,14 +24,14 @@ under the License. */
 
 namespace lruc
 {
-	template < class Key, class T >
+	template < class Key, class T, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key> >
 	class lru_cache
 	{
 		typedef std::pair<Key, T>								data_value_type;
 		typedef std::list<data_value_type>						data_container;
 		typedef typename data_container::iterator				data_iterator;
 
-		typedef std::unordered_map<Key, data_iterator>			key_container;
+		typedef std::unordered_map<Key, data_iterator, Hash, KeyEqual>			key_container;
 		typedef typename key_container::const_iterator			key_iterator;
 
 
